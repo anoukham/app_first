@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          width: 200,
+          width: 300,
           height: 100,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
