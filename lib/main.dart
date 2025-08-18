@@ -40,25 +40,39 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Container(
-          width: 300,
-          height: 100,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.lightBlueAccent,
-          ),
-          child: Center(
-            child: Text(
-              'Hello Flutter',
-              style: TextStyle(
-                fontSize: 24,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 100,
+            decoration: BoxDecoration(color: Colors.blue),
+            child: const Text(
+              'aek',
+              style: TextStyle(color: Colors.white),
+              textAlign: TextAlign.left,
             ),
           ),
-        ),
+          Container(
+            width: double.infinity,
+            height: 100,
+            decoration: BoxDecoration(color: Colors.green),
+            child: const Text(
+              'aekk',
+              style: TextStyle(color: Colors.black),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            height: 100,
+            decoration: BoxDecoration(color: Colors.orange),
+            child: const Text(
+              'aekkk',
+              style: TextStyle(color: Colors.white),
+              textAlign: TextAlign.right,
+            ),
+          ),
+        ],
       ),
     );
   }
