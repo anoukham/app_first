@@ -42,35 +42,51 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          Container(
-            width: double.infinity,
-            height: 100,
-            decoration: BoxDecoration(color: Colors.blue),
-            child: const Text(
-              'aek',
-              style: TextStyle(color: Colors.white),
-              textAlign: TextAlign.left,
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 100,
-            decoration: BoxDecoration(color: Colors.green),
-            child: const Text(
-              'aekk',
-              style: TextStyle(color: Colors.black),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            height: 100,
-            decoration: BoxDecoration(color: Colors.orange),
-            child: const Text(
-              'aekkk',
-              style: TextStyle(color: Colors.white),
-              textAlign: TextAlign.right,
-            ),
+          Row(
+            children: [
+              Container(
+                width: 120,
+                height: 100,
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [
+                    BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(2, 2)),
+                  ],
+                ),
+                child: Text('Flutter Container #1'),
+              ),
+              Container(
+                width: 120,
+                height: 100,
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [
+                    BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(2, 2)),
+                  ],
+                ),
+                child: Text('Flutter Container #2'),
+              ),
+              Container(
+                width: 120,
+                height: 100,
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [
+                    BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(2, 2)),
+                  ],
+                ),
+                child: Text('Flutter Container #3'),
+              ),
+            ],
           ),
         ],
       ),
