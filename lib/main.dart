@@ -40,55 +40,21 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 120,
-                height: 100,
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(2, 2)),
-                  ],
-                ),
-                child: Text('Flutter Container #1'),
-              ),
-              Container(
-                width: 120,
-                height: 100,
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(2, 2)),
-                  ],
-                ),
-                child: Text('Flutter Container #2'),
-              ),
-              Container(
-                width: 120,
-                height: 100,
-                margin: EdgeInsets.all(10),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Colors.orange,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [
-                    BoxShadow(color: Colors.grey, blurRadius: 5, offset: Offset(2, 2)),
-                  ],
-                ),
-                child: Text('Flutter Container #3'),
-              ),
-            ],
-          ),
-        ],
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: 30,
+        itemBuilder: (context, index) {
+          return Container(
+            color: Colors.primaries[index % Colors.primaries.length],
+            child: Center(
+              child: Text('Box ${index + 1}', style: TextStyle(color: Colors.white)),
+            ),
+          );
+        },
       ),
     );
   }
