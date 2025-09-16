@@ -1,3 +1,4 @@
+import 'package:app_first/src/page/pages/rooutes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               color: Colors.white,
               padding: EdgeInsets.all(20),
-              height: 250,
+              height: 300,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -49,10 +50,12 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickLogin() {
-    print("Username: ${_usernameContorller.text}");
-    print("Password: ${_passwordContorller.text}");
-    print("Username: ${_usernameContorller.text} Password: ${_passwordContorller.text}");
-  }
+  //   print("Username: ${_usernameContorller.text}");
+  //   print("Password: ${_passwordContorller.text}");
+  //   print("Username: ${_usernameContorller.text} Password: ${_passwordContorller.text}");
+   Navigator.pushNamed(context, AppRooute.home);
+   }
+
 
   void _handleClickReset() {
     _usernameContorller.text = "";
@@ -82,11 +85,18 @@ class _LoginPageState extends State<LoginPage> {
         ),
       child: Text("Sigin"),
         ),
+      SizedBox(height: 15,),
+      OutlinedButton(onPressed: _handleClickRegister,
+      child: Text("Register"),  ),
 
       SizedBox(height: 15,),
       OutlinedButton(onPressed: _handleClickReset,
       child: Text("Reset"),
       )
     ];
+  }
+
+  void _handleClickRegister() {
+    Navigator.pushNamed(context, AppRooute.register);
   }
 }
