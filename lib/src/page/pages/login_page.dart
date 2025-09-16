@@ -28,13 +28,20 @@ class _LoginPageState extends State<LoginPage> {
         width: double.infinity,
         child: Padding(
           padding: const EdgeInsets.all(32),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              ..._builTextFields(),
-              SizedBox(height: 32,),
-              ..._builButtons()
-            ]
+          child: Card(
+            child: Container(
+              color: Colors.white,
+              padding: EdgeInsets.all(20),
+              height: 250,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ..._builTextFields(),
+                  SizedBox(height: 32,),
+                  ..._builButtons()
+                ]
+              ),
+            ),
           ),
         ),
       ),
@@ -67,9 +74,15 @@ class _LoginPageState extends State<LoginPage> {
   
   _builButtons() {
     return [
-      ElevatedButton(onPressed: _handleClickLogin,
-      child: Text("Login"),
-      ),
+      ElevatedButton(
+      onPressed: _handleClickLogin,
+      style: ElevatedButton.styleFrom(
+      backgroundColor: Colors.blue,   // สีพื้นหลัง
+      foregroundColor: Colors.white,  // สีข้อความ "Login"
+        ),
+      child: Text("Sigin"),
+        ),
+
       SizedBox(height: 15,),
       OutlinedButton(onPressed: _handleClickReset,
       child: Text("Reset"),
