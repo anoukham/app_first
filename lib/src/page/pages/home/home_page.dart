@@ -10,6 +10,6 @@ class HoomePage extends StatefulWidget {
 class _HoomePageState extends State<HoomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Container();
   }
 }
