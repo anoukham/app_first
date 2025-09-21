@@ -13,6 +13,7 @@ class _LoginPageState extends State<LoginPage> {
 
   final _usernameContorller = TextEditingController();  
   final _passwordContorller = TextEditingController();
+  int count = 0;
   @override
   void initState() {
     _usernameContorller.text = "admin";
@@ -33,13 +34,35 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               color: Colors.white,
               padding: EdgeInsets.all(20),
-              height: 300,
+              height: 400,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ..._builTextFields(),
                   SizedBox(height: 32,),
-                  ..._builButtons()
+                  ..._builButtons(),
+                  SizedBox(height:20),
+                  Row(
+                    children: [
+                      Text("DeBug: $count"),
+                      IconButton(
+                        onPressed: () {
+                          count ++;
+                          setState(() {
+                            
+                          });
+                        }, 
+                        icon: Icon(Icons.add)),
+                      IconButton(
+                        onPressed: () {
+                          count--;
+                          setState(() {
+                            
+                          });
+                        }, 
+                        icon: Icon(Icons.remove))  
+                    ],
+                  )
                 ]
               ),
             ),

@@ -14,8 +14,10 @@ class _HoomePageState extends State<HoomePage> {
       appBar: AppBar(
         title: const Text('Home Page'),
       ),
-      body: Container(
-        child: Text('123'),
+      body: Center(
+        child: Container(
+          child: Text('123'),
+        ),
       ),
     );
   }
