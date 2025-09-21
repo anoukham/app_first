@@ -1,6 +1,8 @@
-import 'package:app_first/src/page/pages/rooutes.dart';
+import 'package:app_first/src/bloc/login_bloc.dart';
+import 'package:app_first/src/page/pages/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -44,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height:20),
                   Row(
                     children: [
-                      Text("DeBug: $count"),
+                      Text("DeBug: ${context.read<LoginBloc>().state.count}"),
                       IconButton(
                         onPressed: () {
                           count ++;
@@ -76,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
   //   print("Username: ${_usernameContorller.text}");
   //   print("Password: ${_passwordContorller.text}");
   //   print("Username: ${_usernameContorller.text} Password: ${_passwordContorller.text}");
-   Navigator.pushNamed(context, AppRooute.home);
+   Navigator.pushNamed(context, AppRoute.home);
    }
 
 
@@ -120,6 +122,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickRegister() {
-    Navigator.pushNamed(context, AppRooute.register);
+    Navigator.pushNamed(context, AppRoute.register);
   }
 }
