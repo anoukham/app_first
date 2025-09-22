@@ -14,7 +14,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _usernameContorller = TextEditingController();
   final _passwordContorller = TextEditingController();
-  
+
   @override
   void initState() {
     _usernameContorller.text = "admin";
@@ -26,7 +26,11 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login Page"),
+        title: BlocBuilder<LoginBloc, LoginState>(
+          builder: (context, state) {
+            return Text("Login Page: ${state.count}");
+          },
+        ),
         backgroundColor: Colors.lightBlueAccent,
       ),
       body: Container(
@@ -58,7 +62,10 @@ class _LoginPageState extends State<LoginPage> {
                         icon: Icon(Icons.add),
                       ),
                       IconButton(
-                        onPressed: () => context.read<LoginBloc>().add(LoginEventRemove()),
+                        onPressed:
+                            () => context.read<LoginBloc>().add(
+                              LoginEventRemove(),
+                            ),
                         icon: Icon(Icons.remove),
                       ),
                     ],
