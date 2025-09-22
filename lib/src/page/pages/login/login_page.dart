@@ -12,10 +12,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
-  final _usernameContorller = TextEditingController();  
+  final _usernameContorller = TextEditingController();
   final _passwordContorller = TextEditingController();
-  int count = 0;
+  
   @override
   void initState() {
     _usernameContorller.text = "admin";
@@ -26,8 +25,10 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Login Page"), 
-      backgroundColor: Colors.lightBlueAccent,),
+      appBar: AppBar(
+        title: Text("Login Page"),
+        backgroundColor: Colors.lightBlueAccent,
+      ),
       body: Container(
         width: double.infinity,
         child: Padding(
@@ -41,31 +42,28 @@ class _LoginPageState extends State<LoginPage> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   ..._builTextFields(),
-                  SizedBox(height: 32,),
+                  SizedBox(height: 32),
                   ..._builButtons(),
-                  SizedBox(height:20),
+                  SizedBox(height: 20),
                   Row(
                     children: [
-                      Text("DeBug: ${context.read<LoginBloc>().state.count}"),
+                      //    Text("DeBug: ${context.read<LoginBloc>().state.count}"),
+                      BlocBuilder<LoginBloc, LoginState>(
+                        builder: (context, state) {
+                          return Text("DebugX: ${state.count}");
+                        },
+                      ),
                       IconButton(
-                        onPressed: () {
-                          count ++;
-                          setState(() {
-                            
-                          });
-                        }, 
-                        icon: Icon(Icons.add)),
+                        onPressed: _handleClickAdd,
+                        icon: Icon(Icons.add),
+                      ),
                       IconButton(
-                        onPressed: () {
-                          count--;
-                          setState(() {
-                            
-                          });
-                        }, 
-                        icon: Icon(Icons.remove))  
+                        onPressed: () => context.read<LoginBloc>().add(LoginEventRemove()),
+                        icon: Icon(Icons.remove),
+                      ),
                     ],
-                  )
-                ]
+                  ),
+                ],
               ),
             ),
           ),
@@ -75,12 +73,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _handleClickLogin() {
-  //   print("Username: ${_usernameContorller.text}");
-  //   print("Password: ${_passwordContorller.text}");
-  //   print("Username: ${_usernameContorller.text} Password: ${_passwordContorller.text}");
-   Navigator.pushNamed(context, AppRoute.home);
-   }
-
+    //   print("Username: ${_usernameContorller.text}");
+    //   print("Password: ${_passwordContorller.text}");
+    //   print("Username: ${_usernameContorller.text} Password: ${_passwordContorller.text}");
+    Navigator.pushNamed(context, AppRoute.home);
+  }
 
   void _handleClickReset() {
     _usernameContorller.text = "";
@@ -90,38 +87,39 @@ class _LoginPageState extends State<LoginPage> {
   _builTextFields() {
     return [
       TextField(
-      controller: _usernameContorller,
-      decoration: InputDecoration(labelText: "Username"),
-              ),
+        controller: _usernameContorller,
+        decoration: InputDecoration(labelText: "Username"),
+      ),
       TextField(
-      controller: _passwordContorller,
-      decoration: InputDecoration(labelText: "Password"),
-              ),
+        controller: _passwordContorller,
+        decoration: InputDecoration(labelText: "Password"),
+      ),
     ];
   }
-  
+
   _builButtons() {
     return [
       ElevatedButton(
-      onPressed: _handleClickLogin,
-      style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.blue,   // สีพื้นหลัง
-      foregroundColor: Colors.white,  // สีข้อความ "Login"
+        onPressed: _handleClickLogin,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.blue, // สีพื้นหลัง
+          foregroundColor: Colors.white, // สีข้อความ "Login"
         ),
-      child: Text("Sigin"),
-        ),
-      SizedBox(height: 15,),
-      OutlinedButton(onPressed: _handleClickRegister,
-      child: Text("Register"),  ),
+        child: Text("Sigin"),
+      ),
+      SizedBox(height: 15),
+      OutlinedButton(onPressed: _handleClickRegister, child: Text("Register")),
 
-      SizedBox(height: 15,),
-      OutlinedButton(onPressed: _handleClickReset,
-      child: Text("Reset"),
-      )
+      SizedBox(height: 15),
+      OutlinedButton(onPressed: _handleClickReset, child: Text("Reset")),
     ];
   }
 
   void _handleClickRegister() {
     Navigator.pushNamed(context, AppRoute.register);
+  }
+
+  void _handleClickAdd() {
+    context.read<LoginBloc>().add(LoginEventAdd());
   }
 }
