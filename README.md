@@ -1,4 +1,4 @@
-# app_first
+# app_first_easy_ui+bloc
 
 A new Flutter project.
 
